@@ -4,6 +4,8 @@
   "private": true,
   "homepage": "http://csumphan.github.io/AirpodProject",
   "dependencies": {
+    "lodash": "^4.17.11",
+    "lodash.debounce": "^4.0.8",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-pose": "^4.0.7",

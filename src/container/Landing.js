@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import posed, { PoseGroup } from 'react-pose'
 import ProgressButton from 'react-progress-button'
+import _ from 'lodash'
 
 import Airpod from '../component/Airpod'
-
 import honne from '../_assets/honne.mp3'
 import walking from '../_assets/walking.mp3'
 import boy from '../_assets/boy4.svg'
@@ -12,15 +12,15 @@ import person from '../_assets/person.png'
 import "react-progress-button/react-progress-button.css"
 
 const AnimationContainer = posed.div({
-  enter: { y: 0, opacity: 1, delay: 300  },
+  enter: { y: 0, opacity: 1 },
   exit: { y: 50, opacity: 0 }
 });
 
 const SubtitleContainer = posed.div({
-  enter: { y: 0, opacity: 1, delay: 1000 },
+  enter: { y: 0, opacity: 1, delay: 700 },
   exit: {
     opacity: 0,
-    transition: { duration: 1000 }
+    transition: { duration: 200 }
   }
 })
 
@@ -83,7 +83,6 @@ class Landing extends Component {
         // When volume at zero stop all the intervalling
         if (sound.volume <= 0.0) {
             clearInterval(fadeAudio);
-            console.log(sound2)
             if (sound2.muted) {
               sound2.muted = false
               sound2.volume = 0.0;
@@ -95,17 +94,14 @@ class Landing extends Component {
   }
 
   onDrag = (x) => {
-    // console.log(x)
-    this.setState({ airPodPosition: parseFloat(x) })
-  }
+      this.setState({ airPodPosition: parseFloat(x) })
+    }
 
   onDragStart = (x) => {
-    console.log('DRAG START', this.state.airPodPosition)
     this.setState({ startPosition: this.state.airPodPosition })
   }
 
   onDragEnd = (blah) => {
-    console.log('DRAG END', this.state.airPodPosition)
 
     if ((this.state.airPodPosition < -88.00 && this.state.startPosition >= -88.00) || (this.state.airPodPosition > -88.00 && this.state.startPosition <= -88.00) ) {
       this.getSoundAndFadeAudio()
@@ -128,7 +124,7 @@ class Landing extends Component {
             </h1>
             <PoseGroup>
             {
-              this.state.animateStart && this.state.buttonState === 'success' ?
+              this.state.animateStart ?
                 <SubtitleContainer key='second'>
                   <h2 className='subtitle'>
                     Drag the airpod off and on the ear.
@@ -173,13 +169,11 @@ class Landing extends Component {
           {
             this.state.animateStart &&  (
               <AnimationContainer key='animationcontainer' className='landing-container'>
-                <img src={boy} className='boy-image' onLoad={() => this.setState({ boyLoaded: true }, () => this.state.boyLoaded && this.state.airPodLoaded ? this.setState({buttonState: 'success'}) : null)} />
+                <img src={boy} className='boy-image' />
                 <Airpod
                   onDragStart={this.onDragStart}
                   onDragEnd={this.onDragEnd}
-                  onValueChange={{x: this.onDrag}}
-                  onLoad={() => this.setState({ airPodLoaded: true }, () => this.state.boyLoaded && this.state.airPodLoaded ? this.setState({buttonState: 'success'}) : null)}
-                />
+                  onValueChange={{x: this.onDrag}} />
               </AnimationContainer>
             )
           }
@@ -188,5 +182,7 @@ class Landing extends Component {
     )
   }
 }
+//onLoad={() => this.setState({ airPodLoaded: true }, () => this.state.boyLoaded && this.state.airPodLoaded ? this.setState({buttonState: 'success'}) : null)}
 
+//onLoad={() => this.setState({ boyLoaded: true }, () => this.state.boyLoaded && this.state.airPodLoaded ? this.setState({buttonState: 'success'}) : null)
 export default Landing

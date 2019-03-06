@@ -52,7 +52,7 @@ body {
 }
 
 .inner-intro {
-  padding: 10px;
+  padding: 10px 20px;
   background-color: white;
   border-radius: 2px;
   padding-bottom: 20px;
@@ -110,7 +110,7 @@ body {
 }
 
 .button-container {
-  width: 200px;
+  width: 250px;
   margin: 0 auto;
 }
 
