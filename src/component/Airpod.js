@@ -4,7 +4,9 @@ import posed from 'react-pose'
 import airpodSvg from '../_assets/AirPods_Vector.svg'
 ////s//
 const AirpodImage = React.forwardRef((props, ref) => (
-    <img ref={ref} src={airpodSvg} className='airpod'/>
+  <div>
+    <img id='airpode-img' draggable={false} ref={ref} src={airpodSvg} className='airpod'/>
+  </div>
 ))
 
 const Airpod = posed(AirpodImage)({

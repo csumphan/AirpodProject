@@ -5,6 +5,8 @@ body {
   text-align: center;
   background-color: #b9fde0;
   min-height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
 }
 
 .App-logo {
@@ -33,15 +35,34 @@ body {
   width: 40%;
 }
 
+.parent-container {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+
 .intro-container {
-  position: absolute;
-  margin: 10px;
+  margin-left: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* position: absolute; */
   width: 40%;
   z-index: 2;
 }
 
+.inner-intro {
+  padding: 10px;
+  background-color: white;
+  border-radius: 2px;
+  padding-bottom: 20px;
+
+}
+
 .title {
-  font-size: 54px;
+  font-size: 64px;
+  font-weight: 300;
+  letter-spacing: 3px;
 }
 
 .subtitle {
@@ -50,33 +71,40 @@ body {
 }
 
 .landing-container {
+  right: 0;
+  /* background-color: red; */
+  width: 58%;
+  position:relative;
   /* visibility: hidden; */
-  position: absolute;
+  /* position: absolute;
   right: 0;
   height: 100%;
   width: 100%;
   background-color: #b9fde0;
-  background-size: 55% 85%;
-  background-image: url('./_assets/person.png');
+  background-size: 1000px 1000px;
+  background-image: url('./_assets/boy4.svg');
   background-repeat: no-repeat;
-  background-position: 120% 50%;
-  background-attachment: fixed;
+  background-position: 900px center;
+  background-attachment: fixed; */
 }
 
 .airpod {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
   position: absolute;
-  top: 42%;
-  right: 37%;
-  width: 5%;
-  height: 25%;
+  width: 6%;
+  height: 20%;
+  top: 540px;
+  left: 230px;
   cursor: pointer;
 }
 
-.person-image {
-  position: fixed;
-  left: 400;
-  top: 0;
-  height: 80%;
+.boy-image {
+  height: 900px;
+  width: 800px;
 }
 
 @keyframes App-logo-spin {

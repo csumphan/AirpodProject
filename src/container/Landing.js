@@ -3,6 +3,7 @@ import Airpod from '../component/Airpod'
 
 import honne from '../_assets/honne.mp3'
 import walking from '../_assets/walking.mp3'
+import boy from '../_assets/boy4.svg'
 
 class Landing extends Component {
   constructor(props) {
@@ -12,6 +13,7 @@ class Landing extends Component {
 
     this.state = {
       song1Playing: true,
+      animateStart: false,
       airPodPosition: 0,
       startPosition: 0,
     }
@@ -41,7 +43,7 @@ class Landing extends Component {
 
     const sound = this.state.song1Playing ? this.song1.current : this.song2.current
     const sound2 = this.state.song1Playing ? this.song2.current : this.song1.current
-
+    console.log('fire getSoundAndFadeAudio')
     console.log('sound', sound)
     // Set the point in playback that fadeout begins. This is for a 2 second fade out.
     var fadePoint = sound.currentTime + 0.5;
@@ -73,36 +75,50 @@ class Landing extends Component {
   }
 
   onDrag = (x) => {
-    console.log(x)
+    // console.log(x)
     this.setState({ airPodPosition: parseFloat(x) })
   }
 
   onDragStart = (x,y) => {
+    console.log('DRAG START', this.state.airPodPosition)
     this.setState({ startPosition: this.state.airPodPosition })
   }
 
   onDragEnd = (blah) => {
-    console.log(blah)
+    console.log('DRAG END', this.state.airPodPosition)
 
     if ((this.state.airPodPosition < -120.00 && this.state.startPosition >= -120.00) || (this.state.airPodPosition > -120.00 && this.state.startPosition <= -120.00) ) {
       this.getSoundAndFadeAudio()
     }
   }
 
+  startAnimations = () => {
+     this.setState({ animateStart: true })
+     this.song1.current.play()
+     this.song2.current.play()
+  }
+
   render() {
     this.song1.current && console.log(this.song1, '')
-
     return (
-      <div>
+      <div className='parent-container'>
         <div className='intro-container'>
+          <div className='inner-intro'>
+            <h1 className='title'>
+              a week without airpods
+            </h1>
+            <h2 className='subtitle'>
+              This is an interactive application showing stuff. Please press Start to begin.
+            </h2>
+            <button onClick={this.startAnimations}>Start</button>
+          </div>
         <audio
           id='song1'
           ref={this.song1}
           src={honne}
           type="audio/mpeg"
-          onCanPlay={() => console.log('can play')}
+          onCanPlay={(x) => console.log('canplay')}
           onCanPlayThrough={() => console.log('can play')}
-          autoPlay
           loop
           />
         <audio
@@ -110,24 +126,26 @@ class Landing extends Component {
           ref={this.song2}
           src={walking}
           type="audio/mpeg"
-          onCanPlay={() => console.log('can play2')}
+          onCanPlay={() => {
+          }}
           onCanPlayThrough={() => console.log('can play2')}
           muted
-          autoPlay
           loop
           />
-          <h1 className='title'>
-            A week without my AirPods
-          </h1>
-          <h2 className='subtitle'></h2>
+
         </div>
-        <div className='landing-container'>
-          <Airpod
-            onDragStart={this.onDragStart}
-            onDragEnd={this.onDragEnd}
-            onValueChange={{x: this.onDrag}}
-          />
-        </div>
+        {
+          this.state.animateStart && (
+            <div className='landing-container'>
+              <img src={boy} className='boy-image'/>
+              <Airpod
+                onDragStart={this.onDragStart}
+                onDragEnd={this.onDragEnd}
+                onValueChange={{x: this.onDrag}}
+              />
+            </div>
+          )
+        }
       </div>
     )
   }
