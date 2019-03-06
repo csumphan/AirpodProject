@@ -1,5 +1,10 @@
+body {
+  font-family: 'Roboto Condensed', sans-serif;
+}
 .App {
   text-align: center;
+  background-color: #b9fde0;
+  min-height: 100vh;
 }
 
 .App-logo {
@@ -21,6 +26,57 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.desc-container {
+  background-color: skyblue;
+  width: 40%;
+}
+
+.intro-container {
+  position: absolute;
+  margin: 10px;
+  width: 40%;
+  z-index: 2;
+}
+
+.title {
+  font-size: 54px;
+}
+
+.subtitle {
+  font-size: 32px;
+  font-weight: 300;
+}
+
+.landing-container {
+  /* visibility: hidden; */
+  position: absolute;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #b9fde0;
+  background-size: 55% 85%;
+  background-image: url('./_assets/person.png');
+  background-repeat: no-repeat;
+  background-position: 120% 50%;
+  background-attachment: fixed;
+}
+
+.airpod {
+  position: absolute;
+  top: 42%;
+  right: 37%;
+  width: 5%;
+  height: 25%;
+  cursor: pointer;
+}
+
+.person-image {
+  position: fixed;
+  left: 400;
+  top: 0;
+  height: 80%;
 }
 
 @keyframes App-logo-spin {
