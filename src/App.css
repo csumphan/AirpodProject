@@ -74,6 +74,7 @@ body {
   right: 0;
   /* background-color: red; */
   width: 58%;
+  max-width: 869px;
   position:relative;
   /* visibility: hidden; */
   /* position: absolute;
@@ -96,7 +97,8 @@ body {
   user-drag: none;
   position: absolute;
   width: 6%;
-  height: 20%;
+  height: 18%;
+  max-height: 150px;
   top: 24em;
   left: 12em;
   cursor: pointer;
@@ -105,6 +107,20 @@ body {
 .boy-image {
   height: 40em;
   width: 50em;
+}
+
+.button-container {
+  width: 200px;
+  margin: 0 auto;
+}
+
+.pb-button {
+  color: #06cc77 !important;
+}
+
+.pb-button span {
+  font-weight: 400 !important;
+  letter-spacing: 1px;
 }
 
 @keyframes App-logo-spin {

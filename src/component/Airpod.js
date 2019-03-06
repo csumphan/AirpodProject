@@ -5,7 +5,7 @@ import airpodSvg from '../_assets/AirPods_Vector.svg'
 ////s//
 const AirpodImage = React.forwardRef((props, ref) => (
   <div>
-    <img id='airpode-img' draggable={false} ref={ref} src={airpodSvg} className='airpod'/>
+    <img id='airpode-img' draggable={false} ref={ref} onLoad={props.onLoad} src={airpodSvg} className='airpod'/>
   </div>
 ))
 
