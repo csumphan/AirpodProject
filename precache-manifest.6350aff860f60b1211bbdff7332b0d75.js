@@ -1,19 +1,19 @@
 self.__precacheManifest = [
   {
-    "revision": "b7feaed1ce306d6d7c32",
-    "url": "/AirpodProject/static/css/main.98f09e1d.chunk.css"
+    "revision": "6425bfe65e31702f060e",
+    "url": "/AirpodProject/static/css/main.dc9ac236.chunk.css"
   },
   {
-    "revision": "b7feaed1ce306d6d7c32",
-    "url": "/AirpodProject/static/js/main.b7feaed1.chunk.js"
+    "revision": "6425bfe65e31702f060e",
+    "url": "/AirpodProject/static/js/main.6425bfe6.chunk.js"
   },
   {
     "revision": "49675a82a1568e07345d",
     "url": "/AirpodProject/static/js/runtime~main.49675a82.js"
   },
   {
-    "revision": "ce581c05ad05b85747cb",
-    "url": "/AirpodProject/static/js/2.ce581c05.chunk.js"
+    "revision": "6eba3a21d736ead428fc",
+    "url": "/AirpodProject/static/js/2.6eba3a21.chunk.js"
   },
   {
     "revision": "83c5e1f54b75c39061483eb67c796ce0",
@@ -28,11 +28,11 @@ self.__precacheManifest = [
     "url": "/AirpodProject/static/media/walking.7fcc9613.mp3"
   },
   {
-    "revision": "50acb6389e6a646dba415b16996a7c43",
-    "url": "/AirpodProject/static/media/person.50acb638.png"
+    "revision": "36ce72fe2c9c73075fb72df9e0732523",
+    "url": "/AirpodProject/static/media/boy4.36ce72fe.svg"
   },
   {
-    "revision": "2e7e33c0643413b70205807cce51fea0",
+    "revision": "76b677af2f7ee3b183d89b847c75ab0b",
     "url": "/AirpodProject/index.html"
   }
 ];
