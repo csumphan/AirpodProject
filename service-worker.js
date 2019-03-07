@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/AirpodProject/precache-manifest.91ffbcf89124e10a81442b9ab7f84bba.js"
+  "/AirpodProject/precache-manifest.7720ce630b6731ba5b24a9eb63cdd421.js"
 );
 
 workbox.clientsClaim();
