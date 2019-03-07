@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "2febb72caf63051b69db",
+    "revision": "586742e4e72e427b0833",
     "url": "/AirpodProject/static/css/main.a3ffee2f.chunk.css"
   },
   {
-    "revision": "2febb72caf63051b69db",
-    "url": "/AirpodProject/static/js/main.2febb72c.chunk.js"
+    "revision": "586742e4e72e427b0833",
+    "url": "/AirpodProject/static/js/main.586742e4.chunk.js"
   },
   {
     "revision": "49675a82a1568e07345d",
@@ -36,7 +36,7 @@ self.__precacheManifest = [
     "url": "/AirpodProject/static/media/boy4.36ce72fe.svg"
   },
   {
-    "revision": "b9fe3d8a731585b2cac29adaaa5ebc25",
+    "revision": "33a9342bd092ee95f96cf4da248a382e",
     "url": "/AirpodProject/index.html"
   }
 ];
