@@ -1,15 +1,17 @@
 import React, { Component } from 'react'
 import posed, { PoseGroup } from 'react-pose'
 import ProgressButton from 'react-progress-button'
+import { AwesomeButton } from "react-awesome-button"
 import _ from 'lodash'
 
 import Airpod from '../component/Airpod'
 import honne from '../_assets/honne.mp3'
 import walking from '../_assets/walking.mp3'
 import boy from '../_assets/boy4.svg'
-import person from '../_assets/person.png'
+// import person from '../_assets/person.png'
 
 import "react-progress-button/react-progress-button.css"
+// import "react-awesome-button/dist/styles.css"
 
 const AnimationContainer = posed.div({
   enter: { y: 0, opacity: 1 },
@@ -17,10 +19,14 @@ const AnimationContainer = posed.div({
 });
 
 const SubtitleContainer = posed.div({
-  enter: { y: 0, opacity: 1, delay: 700 },
+  enter: { y: 0, opacity: 1, delay: 900 },
   exit: {
     opacity: 0,
-    transition: { duration: 200 }
+    y: -100,
+    transition: {
+      ease: [.01, .64, .99, .56]
+    },
+    delay: 200
   }
 })
 
@@ -37,7 +43,8 @@ class Landing extends Component {
       startPosition: 0,
       buttonState: '',
       airPodLoaded: false,
-      boyLoaded: false
+      boyLoaded: false,
+      buttonAnimationDone: false
     }
   }
 
@@ -110,8 +117,6 @@ class Landing extends Component {
 
   startAnimations = () => {
      this.setState({ animateStart: true })
-     this.song1.current.play()
-     this.song2.current.play()
   }
 
   render() {
@@ -124,19 +129,26 @@ class Landing extends Component {
             </h1>
             <PoseGroup>
             {
-              this.state.animateStart ?
+              this.state.animateStart && this.state.buttonAnimationDone ?
                 <SubtitleContainer key='second'>
                   <h2 className='subtitle'>
-                    Drag the airpod off and on the ear.
+                    Drag the airpod off and on the ear to toggle headphone/background sounds.
                   </h2>
                 </SubtitleContainer>
                 :
                 <SubtitleContainer key='first'>
                   <h2 className='subtitle'>
-                    This is an interactive application showing stuff. Please press Start to begin.
+                    This is an interactive application contrasting the sounds I heard with and without my airpods
                   </h2>
                   <div className='button-container'>
-                    <ProgressButton onClick={this.startAnimations} state={this.state.buttonState}>
+                    <ProgressButton onSuccess={() => {
+                      this.setState({ buttonAnimationDone: true })
+                      this.song1.current.play()
+                      this.song2.current.play()
+                      }
+                    }
+                      onClick={this.startAnimations}
+                      state={this.state.buttonState}>
                       start
                     </ProgressButton>
                   </div>
@@ -169,8 +181,9 @@ class Landing extends Component {
           {
             this.state.animateStart &&  (
               <AnimationContainer key='animationcontainer' className='landing-container'>
-                <img src={boy} className='boy-image' />
+                <img src={boy} className='boy-image' onLoad={() => this.setState({ boyLoaded: true }, () => this.state.boyLoaded && this.state.airPodLoaded ? this.setState({buttonState: 'success'}) : null)}/>
                 <Airpod
+                  onLoad={() => this.setState({ airPodLoaded: true }, () => this.state.boyLoaded && this.state.airPodLoaded ? this.setState({buttonState: 'success'}) : null)}
                   onDragStart={this.onDragStart}
                   onDragEnd={this.onDragEnd}
                   onValueChange={{x: this.onDrag}} />
@@ -182,7 +195,5 @@ class Landing extends Component {
     )
   }
 }
-//onLoad={() => this.setState({ airPodLoaded: true }, () => this.state.boyLoaded && this.state.airPodLoaded ? this.setState({buttonState: 'success'}) : null)}
 
-//onLoad={() => this.setState({ boyLoaded: true }, () => this.state.boyLoaded && this.state.airPodLoaded ? this.setState({buttonState: 'success'}) : null)
 export default Landing
