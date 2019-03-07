@@ -132,7 +132,7 @@ class Landing extends Component {
               this.state.animateStart && this.state.buttonAnimationDone ?
                 <SubtitleContainer key='second'>
                   <h2 className='subtitle'>
-                    Drag the airpod off and on the ear to toggle headphone/background sounds.
+                    Drag the airpod off and on the ear to toggle between music and background sound
                   </h2>
                 </SubtitleContainer>
                 :
