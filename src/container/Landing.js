@@ -1,17 +1,13 @@
 import React, { Component } from 'react'
 import posed, { PoseGroup } from 'react-pose'
 import ProgressButton from 'react-progress-button'
-import { AwesomeButton } from "react-awesome-button"
-import _ from 'lodash'
 
 import Airpod from '../component/Airpod'
 import honne from '../_assets/honne.mp3'
-import walking from '../_assets/walking.mp3'
+import walking2 from '../_assets/walking2.mp3'
 import boy from '../_assets/boy4.svg'
-// import person from '../_assets/person.png'
 
 import "react-progress-button/react-progress-button.css"
-// import "react-awesome-button/dist/styles.css"
 
 const AnimationContainer = posed.div({
   enter: { y: 0, opacity: 1 },
@@ -52,7 +48,6 @@ class Landing extends Component {
     var rampAudio = setInterval(() => {
         // console.log(sound.volume, sound.currentTime, fadePoint)
         // Only fade if past the fade out point or not at zero already
-        console.log(s.currentTime, s.volume)
         if ((s.volume >= 0.0)) {
             if (s.volume + 0.1 > 0.9) {
               s.volume = 1
@@ -161,18 +156,15 @@ class Landing extends Component {
           ref={this.song1}
           src={honne}
           type="audio/mpeg"
-          onCanPlay={(x) => console.log('canplay')}
-          onCanPlayThrough={() => console.log('can play')}
           loop
           />
         <audio
           id='song2'
           ref={this.song2}
-          src={walking}
+          src={walking2}
           type="audio/mpeg"
           onCanPlay={() => {
           }}
-          onCanPlayThrough={() => console.log('can play2')}
           muted
           loop
           />
